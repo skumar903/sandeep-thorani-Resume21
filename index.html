@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandeep Thorani - Audit Professional | CA Finalist</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #0b7adb 0%, #00f2fe 100%);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(79, 172, 254, 0.3);
+            margin-bottom: 30px;
+            animation: slideInDown 1s ease-out;
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .header .subtitle {
+            font-size: 1.4em;
+            font-weight: 500;
+            margin-bottom: 20px;
+            opacity: 0.95;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.2);
+            padding: 12px 20px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background: rgba(255,255,255,0.9);
+            color: #4facfe;
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        .section {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section h2 {
+            font-size: 2.2em;
+            color: #4facfe;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Experience & Education */
+        .experience-item, .education-item {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8f0ff 100%);
+            border-radius: 15px;
+            border-left: 5px solid #4facfe;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-item:hover, .education-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 20px 40px rgba(79, 172, 254, 0.15);
+        }
+
+        .company-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .position-duration {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+
+        .position-duration i {
+            color: #4facfe;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-top: 4px solid #4facfe;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(79, 172, 254, 0.2);
+        }
+
+        .project-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-duration {
+            color: #7f8c8d;
+            font-size: 0.95em;
+            margin-bottom: 15px;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        /* Certifications */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .cert-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .cert-card:hover {
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.5em; }
+            .header .subtitle { font-size: 1.2em; }
+            .section { padding: 25px; }
+            .contact-info { flex-direction: column; gap: 15px; }
+        }
+
+        /* Animations */
+        @keyframes slideInDown {
+            from { transform: translateY(-100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Sandeep Thorani</h1>
+            <div class="subtitle">Audit Associate II at A. F. Ferguson & Co. (PwC Pakistan)<br>
+            CA Finalist (ICAP) | ACCA Student | Finance & Audit Professional</div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i> 0335-7304916
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i> 
+                    <a href="mailto:sandeepthorani4@gmail.com" style="color:white;text-decoration:none;">sandeepthorani4@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i> 
+                    <a href="https://linkedin.com/in/sandeep-thorani-94119a160" style="color:white;text-decoration:none;" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+            <div style="margin-top:15px; font-size:1.1em;">Karachi, Sindh, Pakistan</div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav">
+            <button class="nav-btn active" onclick="showSection('profile')">Profile</button>
+            <button class="nav-btn" onclick="showSection('experience')">Experience</button>
+            <button class="nav-btn" onclick="showSection('projects')">Projects</button>
+            <button class="nav-btn" onclick="showSection('education')">Education</button>
+            <button class="nav-btn" onclick="showSection('skills')">Skills</button>
+            <button class="nav-btn" onclick="showSection('certifications')">Certifications</button>
+            <button class="nav-btn" onclick="showSection('volunteering')">Volunteering</button>
+        </div>
+
+        <!-- Profile Section -->
+        <div id="profile" class="section visible">
+            <h2><i class="fas fa-user"></i> Profile Summary</h2>
+            <p>CA Finalist and ACCA student committed to excellence in finance, accounting, and assurance. Experienced with a Big Four firm (PwC) in audit, financial reporting, and client coordination. Skilled in IFRS, internal controls, audits, financial statement analysis, and problem-solving. Proven ability to work under pressure with high standards and passion for continuous learning.</p>
+        </div>
+
+        <!-- Experience Section -->
+        <div id="experience" class="section">
+            <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
+            <div class="experience-item">
+                <div class="company-title">A. F. Ferguson & Co. (PwC Pakistan)</div>
+                <div class="position-duration">
+                    <span>Audit Associate II</span>
+                    <span><i class="fas fa-calendar"></i> Jul 2024 – Present</span>
+                </div>
+                <ul style="margin:0;padding-left:20px;">
+                    <li>Coordinate and perform comprehensive audit and financial reporting activities for multiple sectors.</li>
+                    <li>Lead engagements, manage client relations, and ensure compliance with IFRS, ISA, and local regulations.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <div class="company-title">A. F. Ferguson & Co. (PwC Pakistan)</div>
+                <div class="position-duration">
+                    <span>Audit Associate</span>
+                    <span><i class="fas fa-calendar"></i> Jun 2022 – Jun 2024</span>
+                </div>
+                <ul style="margin:0;padding-left:20px;">
+                    <li>Executed risk-based audit procedures, financial analysis, and documentation for clients across power, healthcare, education, freight forwarding, and tech industries.</li>
+                    <li>Supported audits of listed companies, startups, and large subsidiaries, enhancing technical skills and audit quality standards.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div id="projects" class="section">
+            <h2><i class="fas fa-project-diagram"></i> Key Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-title"><i class="fas fa-building"></i> Voith Germany - Pakistan Branch</div>
+                    <div class="project-duration">Jan 2023 – Jun 2023</div>
+                    <p>Managed full accounting and audit coordination; prepared financial statements including Chinese currency conversion for reporting to Voith China; managed payroll and audit communication.</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-title"><i class="fas fa-solar-panel"></i> Gul Ahmed Wind Power Limited</div>
+                    <div class="project-duration">Jun 2023 – Aug 2023</div>
+                    <p>Executed risk-based audits focusing on cost of sales, IFRS 16 leases, payroll, advances, deposits, and controls in the renewable energy sector.</p>
+                </div>
+<div class="project-card">
+                    <div class="project-title"><i class="fas fa-solar-panel"></i> Zephyr Power Limited (Annual Audit and Certifications)</div>
+                    <div class="project-duration">Jun 2022 – Aug 2022</div>
+                    <p>Conducted statutory audit and special engagements in securities confirmation and foreign currency payments
+certification per regulatory requirements.</p>
+                </div>
+<div class="project-card">
+                    <div class="project-title"><i class="fas fa-building"></i> Associated Consulting Engineers (ACE) (Annual Audit)</div>
+                    <div class="project-duration">Aug 2022 – Oct 2022</div>
+                    <p>Independently audited multiple subsidiaries and group financial statements with focus on compliance and risk
+identification.</p>
+                </div>
+<div class="project-card">
+                    <div class="project-title"><i class="fas fa-pills"></i> IBL HealthCare Limited (COCG Compliance Review)</div>
+                    <div class="project-duration">Sep 2025</div>
+                    <p>Managed evaluation of compliance with corporate governance codes in accordance with the Companies Act, 2017
+and SECP Code of Corporate Governance Regulations 2019 for a publicly listed pharmaceutical company</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-title"><i class="fas fa-rocket"></i> Retailo Pakistan (Private) Limited & Retailo Technologies Pakistan (Private) Limited</div>
+                    <div class="project-duration">Dec 2023 – Jan 2024</div>
+                    <p>Performed substantive and control-based audit procedures on cash, leases, gratuity, inventory, payroll, and partial sales tax verifications in a tech startup environment.</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-title"><i class="fas fa-university"></i> Karachi Grammar School (Annual Audit)</div>
+                    <div class="project-duration">Oct 2022 – Dec 2022</div>
+                    <p>Performed detailed audit covering employee benefits, assets, and accounting estimates with emphasis on actuarial
+valuations.</p>
+                </div>
+<div class="project-card">
+                    <div class="project-title"><i class="fas fa-university"></i> Karachi Grammar School Provident Fund</div>
+                    <div class="project-duration">Aug 2023 – Sep 2023</div>
+                    <p>Fully managed the audit of provident fund investments and member contributions with compliance to IFRS 9 and regulatory standards.</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-title"><i class="fas fa-truck"></i> Damco Pakistan Private Limited</div>
+                    <div class="project-duration">Feb 2025 – May 2025</div>
+                    <p>Audited freight forwarding financials including revenue, complex intercompany transactions and trade receivables/payables with global reporting compliance.</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-title"><i class="fas fa-crown"></i> Mondelez Pakistan Limited</div>
+                    <div class="project-duration">Oct 2024 – Nov 2024</div>
+                    <p>Oversaw revenue verification audit, ensuring accurate royalty calculations based on net revenue following IFRS and contractual requirements.</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-title"><i class="fas fa-pills"></i> IBL HealthCare Limited (Annual Audit)</div>
+                    <div class="project-duration">Jun 2025 – Oct 2025</div>
+                    <p>Comprehensive audit of cost cycle, leases, investment properties, fraud risk, and regulatory compliance for a listed entity.</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-title"><i class="fas fa-shipping-fast"></i> UPS Pakistan</div>
+                    <div class="project-duration">Jan 2024 – Feb 2025</div>
+                    <p>Oversaw audit team focusing on revenue and costs over 14 months, supporting reporting to UPS Ireland ensuring IFRS compliance.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education Section -->
+        <div id="education" class="section">
+            <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+            <div class="education-item">
+                <div class="company-title">Institute of Chartered Accountants of Pakistan (ICAP)</div>
+                <div class="position-duration">
+                    <span>Certification in Accounting and Finance</span>
+                    <span><i class="fas fa-calendar"></i> Jan 2020 – Mar 2022</span>
+                </div>
+            </div>
+            <div class="education-item">
+                <div class="company-title">Association of Chartered Certified Accountants (ACCA)</div>
+                <div class="position-duration">
+                    <span>In Progress, 7 of 13 exams cleared</span>
+                    <span><i class="fas fa-calendar"></i> Feb 2025 – Present</span>
+                </div>
+            </div>
+            <div class="education-item">
+                <div class="company-title">Tabani's College, Karachi</div>
+                <div class="position-duration">
+                    <span>Intermediate in Commerce — Grade: A1</span>
+                    <span><i class="fas fa-calendar"></i> May 2017 – Apr 2019</span>
+                </div>
+            </div>
+            <div class="education-item">
+                <div class="company-title">Saint John's Grammar School Kandhkot</div>
+                <div class="position-duration">
+                    <span>Matriculation in Science — Grade: A1</span>
+                    <span><i class="fas fa-calendar"></i> Apr 2015 – Mar 2017</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div id="skills" class="section">
+            <h2><i class="fas fa-chart-line"></i> Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 style="margin-bottom:15px;">Industry Knowledge</h3>
+                    <p>IFRS • Financial Reporting • Audit • Taxation<br>Cost Accounting • Internal Controls • Financial Analysis</p>
+                </div>
+                <div class="skill-category">
+                    <h3 style="margin-bottom:15px;">Software & Tools</h3>
+                    <p>Microsoft 365 • Excel (LinkedIn Certified)<br>Data Snipper • Power BI</p>
+                </div>
+                <div class="skill-category">
+                    <h3 style="margin-bottom:15px;">Languages</h3>
+                    <p>English • Urdu • Hindi • Sindhi</p>
+                </div>
+                <div class="skill-category">
+                    <h3 style="margin-bottom:15px;">Soft Skills</h3>
+                    <p>Communication • Client Coordination<br>Problem Solving • Analytical Thinking</p>
+                </div>
+            </div>
+        </div>
+
+      <!-- Certifications Section -->
+<div id="certifications" class="section">
+    <h2><i class="fas fa-certificate"></i> Certifications</h2>
+    <div class="certifications-grid">
+        <div class="cert-card">
+            <i class="fas fa-database fa-2x" style="margin-bottom:10px;"></i>
+            <div style="font-weight:600;margin-bottom:5px;">Data Analytics and Business Intelligence <a href="https://drive.google.com/file/d/1kOXrmhlh1Ticy7KH6v7jv8EVVgzrM_z8/view?usp=drive_link" target="_blank" rel="noopener noreferrer" style="font-size:0.9em;">(View)</a></div>
+            <div>DigiSkills.pk • Oct 2024</div>
+        </div>
+        <div class="cert-card">
+            <i class="fas fa-chart-bar fa-2x" style="margin-bottom:10px;"></i>
+            <div style="font-weight:600;margin-bottom:5px;">Data Management and Analytics <a href="https://drive.google.com/file/d/1WoasW_YPwOy6wvsSrB3G442mJh7dapM5/view?usp=drive_link" target="_blank" rel="noopener noreferrer" style="font-size:0.9em;">(View)</a></div>
+            <div>ICAP • Apr 2024</div>
+        </div>
+        <div class="cert-card">
+            <i class="fas fa-chart-line fa-2x" style="margin-bottom:10px;"></i>
+            <div style="font-weight:600;margin-bottom:5px;">Data Analytics <a href="https://drive.google.com/file/d/1PIV1EvSqFib6DT2dMrrp8wHCa3evKPLy/view?usp=drive_link" target="_blank" rel="noopener noreferrer" style="font-size:0.9em;">(View)</a></div>
+            <div>PwC • Apr 2023</div>
+        </div>
+<div class="cert-card">
+            <i class="fas fa-file-invoice fa-2x" style="margin-bottom:10px;"></i>
+            <div style="font-weight:600;margin-bottom:5px;">Reading Financial Statements <a href="https://drive.google.com/file/d/1zH0OzLB08UFB8NqVU-_xeEl9EJPTbHJ4/view?usp=drive_link" target="_blank" rel="noopener noreferrer" style="font-size:0.9em;">(View)</a></div>
+            <div>CFI • Jun 2022</div>
+        </div>
+        <div class="cert-card">
+            <i class="fas fa-chart-pie fa-2x" style="margin-bottom:10px;"></i>
+            <div style="font-weight:600;margin-bottom:5px;">Data Visualization using Tableau <a href="https://drive.google.com/file/d/1icdFgdVCFjNqckCoqtrHgbRYIg1My-c7/view?usp=drive_link" target="_blank" rel="noopener noreferrer" style="font-size:0.9em;">(View)</a></div>
+            <div>Great Learning • Jun 2022</div>
+        </div>
+        <div class="cert-card">
+            <i class="fas fa-coins fa-2x" style="margin-bottom:10px;"></i>
+            <div style="font-weight:600;margin-bottom:5px;">Financial Markets <a href="https://drive.google.com/file/d/1cIFjPOkQcIZXn1rquMgqIFA0i94Wp30M/view?usp=drive_link" target="_blank" rel="noopener noreferrer" style="font-size:0.9em;">(View)</a></div>
+            <div>Great Learning • Jun 2022</div>
+        </div>
+<div class="cert-card">
+            <i class="fas fa-file-invoice fa-2x" style="margin-bottom:10px;"></i>
+            <div style="font-weight:600;margin-bottom:5px;">Financial Audit Virtual Experience <a href="https://drive.google.com/file/d/1DIVfTHsfFlKzpVMTTSPLcTwGKUKs_2ZZ/view?usp=drive_link" target="_blank" rel="noopener noreferrer" style="font-size:0.9em;">(View)</a></div>
+            <div>PwC • Apr 2022</div>
+        </div>
+<div class="cert-card">
+            <i class="fas fa-microphone-alt fa-2x" style="margin-bottom:10px;"></i>
+            <div style="font-weight:600;margin-bottom:5px;">Presentation and Communication Skills <a href="https://drive.google.com/file/d/12h3q1qfQXz72RkeKUcZaYRIPuWUr_Lcm/view?usp=drive_link" target="_blank" rel="noopener noreferrer" style="font-size:0.9em;">(View)</a></div>
+            <div>ICAP • Mar 2021</div>
+        </div>
+<div class="cert-card">
+            <i class="fas fa-coins fa-2x" style="margin-bottom:10px;"></i>
+            <div style="font-weight:600;margin-bottom:5px;">National Financial Literacy Program for Youth <a href="https://drive.google.com/file/d/1jQK9vAj34lZPEc4MryP2D-UvBEPy9jJ4/view?usp=drive_link" target="_blank" rel="noopener noreferrer" style="font-size:0.9em;">(View)</a></div>
+            <div>NIBF Pakistan • Jul 2020</div>
+        </div>
+    </div>
+</div>
+
+
+        <!-- Volunteering Section -->
+<div id="volunteering" class="section">
+    <h2><i class="fas fa-heart"></i> Volunteering</h2>
+    <div class="experience-item">
+        <div class="company-title">United Nations Association of Pakistan (UNAP)</div>
+        <div class="position-duration">
+            <span>Community Volunteer <a href="https://drive.google.com/file/d/1UpEz3zaIPqy8anvOjrvr0u3c2xBBdwVo/view?usp=drive_link" target="_blank" rel="noopener noreferrer" style="color:#4facfe; text-decoration:none; font-weight:600;">(Click for Recommendation Letter)</a></span>
+            <span><i class="fas fa-calendar"></i> Apr 2021 – Feb 2022</span>
+        </div>
+        <ul style="margin:0;padding-left:20px;">
+            <li>Contributed to social service initiatives as a committed volunteer.</li>
+            <li>Received an official recommendation letter acknowledging notable contributions and dedication.</li>
+        </ul>
+    </div>
+</div>
+
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Update nav buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('visible');
+                section.style.display = 'none';
+            });
+
+            // Show selected section
+            const targetSection = document.getElementById(sectionId);
+            targetSection.style.display = 'block';
+            setTimeout(() => targetSection.classList.add('visible'), 100);
+
+            // Smooth scroll to top
+            document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        });
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Initial load - show profile
+        window.addEventListener('load', () => {
+            document.getElementById('profile').classList.add('visible');
+        });
+    </script>
+</body>
+</html>
